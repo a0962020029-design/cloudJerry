@@ -4,18 +4,18 @@
 
 extern TIM_HandleTypeDef  htim1; //call main.c defined external variable htim1
 
-int count = 0;
-int duty = 0;
-int COUNT_MAX = 20;
+#define TURN_PWM 200 //for device SG90 turn MAX
 
 void MyCode(){
 	while (1){
-		for(count = 0 ; count < 20 ; count++){
-			duty = (10 * count / (float)COUNT_MAX + 2.5) / 100.0 * 2000;
-			__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1 , duty);
-			HAL_Delay(10);
+		for (int count = 100 ; count < TURN_PWM ; count++ ){
+			__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1 , count);
+			HAL_Delay(5);
 		}
+		for (int count1 = TURN_PWM ; count1 > 99 ; count1-- ){
+			__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1 , count1);
+			HAL_Delay(5);
+		}
+		if
 	}
 }
-
-
