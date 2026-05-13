@@ -30,9 +30,7 @@ void MyCode(){
 			HAL_Delay(5);
 		}
 
-		if(__HAL_TIM_GET_FLAG(&htim1 , TIM_FLAG_CC2) != RESET){
-			ICValue1 = HAL_TIM_ReadCapturedValue(&htim1, TIM_CHANNEL_1);
-			__HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_CC2);
+		if(__HAL_TIM_GET_FLAG(&htim1 , TIM_FLAG_CC1) != RESET){ //when LOW -> HIGH RESET change
 			printf("Read PWM %ld\n", number);
 			number++;
 		}
